@@ -1,10 +1,25 @@
 //require packages used in the project
 const express = require('express')
+const exphbs = require('express-handlebars')
 const app = express()
 const port = 3000
 
-//require express-handlebars here
-const exphbs = require('express-handlebars')
+const mongoose = require('mongoose') // 載入 mongoose
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+mongoose.connect(process.env.MONGODB_URI)
+// 取得資料庫連線狀態
+const db = mongoose.connection
+// 連線異常
+db.on('error', () => {
+  console.log('mongodb error!')
+})
+// 連線成功
+db.once('open', () => {
+  console.log('mongodb connected!')
+})
 
 //require JSON data
 const restaurantList = require('./restaurant.json')
@@ -22,14 +37,6 @@ app.get('/', (req, res) => {
 })
 
 app.get('/restaurants/:restaurant_id', (req, res) => {
-  // const movieOne = {
-  //   id: 1,
-  //   title: 'Jurassic World: Fallen Kingdom',
-  //   description:
-  //     'Several years after the demise of Jurassic World, a volcanic eruption threatens the remaining dinosaurs on the island of Isla Nublar. Claire Dearing, the former park manager and founder of the Dinosaur Protection Group, recruits Owen Grady to help prevent the extinction of the dinosaurs once again.',
-  //   release_date: '2018-06-06',
-  //   image: 'c9XxwwhPHdaImA2f1WEfEsbhaFB.jpg'
-  // }
   const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
   res.render('show', { restaurant: restaurant })
 })
