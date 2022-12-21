@@ -3,13 +3,15 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const app = express()
 const port = 3000
-
+const Restaurant = require('./models/restaurant')
 const mongoose = require('mongoose') // 載入 mongoose
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
+
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+
 // 取得資料庫連線狀態
 const db = mongoose.connection
 // 連線異常
@@ -22,7 +24,7 @@ db.once('open', () => {
 })
 
 //require JSON data
-const restaurantList = require('./restaurant.json')
+// const restaurantList = require('./restaurant.json')
 
 //setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main'}))
@@ -33,7 +35,11 @@ app.use(express.static('public'))
 
 //route setting
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  Restaurant.find()
+    .lean()
+    .then(restaurants => res.render('index', {restaurants}))
+    .catch(error => console.error(error))
+  // res.render('index', { restaurants: restaurantList.results })
 })
 
 app.get('/restaurants/:restaurant_id', (req, res) => {
