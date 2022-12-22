@@ -1,0 +1,51 @@
+<form action="/restaurants" method="POST">
+  <input type="text" placeholder="name" name="name">
+  <button type="submit">Create</button>
+</form>
+
+<div class="container">
+  <div class="w-50 p-3 ">
+    <form action="/restaurants" method="POST">
+      <div class="mb-3 row">
+        <label for="exampleInputPassword1" class="form-label col-3" >餐廳名稱</label>
+        <input type="text" class="col-9" name="name" required="required">
+        <div id="emailHelp" class="form-text">(必填)</div>
+      </div>
+      <div class="mb-3 row">
+        <label for="exampleInputPassword1" class="form-label col-3">餐廳名稱(英文)</label>
+        <input type="text" class="col-9" name="name_en">
+      </div>
+      <div class="mb-3 row">
+        <label for="exampleInputPassword1" class="form-label col-3">餐廳類別</label>
+        <input type="text" class="col-9" name="category">
+      </div>
+      <div class="mb-3 row">
+        <label for="exampleInputPassword1" class="form-label col-3">餐廳圖片(URL)</label>
+        <input type="text" class="col-9" name="image">
+      </div>
+      <div class="mb-3 row">
+        <label for="exampleInputPassword1" class="form-label col-3">地址</label>
+        <input type="text" class="col-9" name="location">
+      </div>
+      <div class="mb-3 row">
+        <label for="exampleInputPassword1" class="form-label col-3">電話</label>
+        <input type="text" class="col-9" name="phone">
+      </div>
+      <div class="mb-3 row">
+        <label for="exampleInputPassword1" class="form-label col-3">地圖位址(URL)</label>
+        <input type="text" class="col-9" name="google_map">
+      </div>
+      <div class="mb-3 row">
+        <label for="exampleInputPassword1" class="form-label col-3">評分</label>
+        <input type="text" class="col-9" name="rating">
+      </div>
+      <div class="mb-3 row">
+        <label for="exampleInputPassword1" class="form-label col-3">餐廳描述</label>
+        <input type="text" class="col-9" name="description">
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+  </div>
+
+</div>
