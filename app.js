@@ -58,10 +58,12 @@ app.get('/search', (req, res) => {
   res.render('index', { restaurants: restaurants, keyword: keyword })
 })
 
+//新增餐廳頁面
 app.get('/restaurants/new', (req, res) => {
   return res.render('new')
 })
 
+//新增餐廳
 app.post('/restaurants', (req, res) => {
   const name = req.body.name
   const name_en = req.body.name_en
@@ -75,6 +77,15 @@ app.post('/restaurants', (req, res) => {
   console.log(req.body)
   return Restaurant.create({ name, name_en, category, image, location, phone, google_map, rating, description })
     .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+//瀏覽餐廳
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('detail', { restaurant }))
     .catch(error => console.log(error))
 })
 

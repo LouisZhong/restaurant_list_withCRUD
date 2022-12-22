@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="card-deck">
+    <div class="card">
+      <img class="card-img-top " src="{{ restaurant.image }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ restaurant.name }} ({{ restaurant.name_en }})</h5>
+        <ul>
+          <li>餐廳類型: {{ restaurant.category }}</li>
+          <li>地址: {{ restaurant.location }}</li>
+          <li>電話: {{ restaurant.phone }}</li>
+          <li><a href="{{ restaurant.google_map }}">google_map</a></li>
+          <li>評分: {{ restaurant.rating }}</li>
+          <li>餐廳描述: {{ restaurant.description }}</li>
+        </ul>
+      </div>
+      <div class="card-footer text-center">
+        <a href="/">back</a>
+      </div>
+    </div>
+  </div>
+</div>
+
