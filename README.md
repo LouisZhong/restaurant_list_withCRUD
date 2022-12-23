@@ -25,7 +25,7 @@ https://github.com/LouisZhong/restaurant_list.git
 cd restaurant_list
 ```
 
-3.依序安裝npm、Express、Handlebars、Modemon
+3.依序安裝npm、Express、Handlebars、Modemon、body-parser、mongoose
 ```
 npm install
 ```
