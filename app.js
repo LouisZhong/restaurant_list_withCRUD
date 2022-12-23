@@ -24,16 +24,12 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
-//require JSON data
-// const restaurantList = require('./restaurant.json')
-
 //setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 
-//setting static files
+//setting static files 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
 app.use(express.static('public'))
-// 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
 app.use(bodyParser.urlencoded({ extended: true }))
 
 //route setting
@@ -42,7 +38,6 @@ app.get('/', (req, res) => {
     .lean()
     .then(restaurants => res.render('index', {restaurants}))
     .catch(error => console.error(error))
-  // res.render('index', { restaurants: restaurantList.results })
 })
 
 app.get('/search', (req, res) => {
@@ -119,6 +114,15 @@ app.post('/restaurants/:id/edit', (req, res) => {
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(error => console.log(error))
+})
+
+//刪除餐廳
+app.post('/restaurants/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
