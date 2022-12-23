@@ -1,5 +1,5 @@
 # 餐廳清單website
-使用node.js + express + handlebars搭設地方餐廳查詢平台，彙整各式各類餐廳資訊，包含餐廳類型、餐廳圖片簡覽、餐廳評比、詳細資料...等
+使用node.js + express + handlebars搭設地方餐廳查詢平台，彙整各式各類餐廳資訊，包含餐廳類型、餐廳圖片簡覽、餐廳評比、詳細資料...等，並供使用者新增、編輯、查詢餐廳資料。
 
 ## 專案畫面
 ![image](https://github.com/LouisZhong/restaurant_list/blob/main/public/img/cover.PNG)
@@ -11,6 +11,8 @@
 - [Express](https://www.npmjs.com/package/express)
 - [Express-Handlebars](https://www.npmjs.com/package/express-handlebars)
 - [Nodemon](https://www.npmjs.com/package/nodemon)
+- [Body-parser](https://www.npmjs.com/package/body-parser)
+- [moogoose](https://mongoosejs.com/)
 
 ## 專案安裝流程
 1.開啟終端機(Terminal) Clone本專案至本機電腦:
@@ -36,6 +38,12 @@ npm install express-handlebars@6.0.6
 ```
 npm install -g nodemon
 ```
+```
+npm install body-parser
+```
+```
+npm install mongoose@5.9.7
+```
 
 4.啟動伺服器
 ```
@@ -49,3 +57,6 @@ npm run dev
 - 卡片式簡覽地方餐廳，包含餐廳名稱、外觀、評比
 - 可快速搜尋餐廳名字
 - 點選後，可瀏覽餐廳詳細資料
+- 可新增餐廳
+- 可編輯餐廳資料
+- 可刪除餐廳
