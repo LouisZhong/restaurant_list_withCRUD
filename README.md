@@ -2,7 +2,7 @@
 使用node.js + express + handlebars搭設地方餐廳查詢平台，彙整各式各類餐廳資訊，包含餐廳類型、餐廳圖片簡覽、餐廳評比、詳細資料...等，並供使用者新增、編輯、查詢餐廳資料。
 
 ## 專案畫面
-![image](https://github.com/LouisZhong/restaurant_list/blob/main/public/img/cover.PNG)
+![image](https://github.com/LouisZhong/restaurant_list_withCRUD/blob/main/public/img/cover.PNG)
 
 ## 環境建置與需求
 
